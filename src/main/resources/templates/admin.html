@@ -90,7 +90,7 @@
 		   if(msg!=null){
 				$.ajax({
                     method: 'get',
-                    url: '/sendmsg',
+                    url: '/sendMsg',
                     data: {
                         "username": user,
                         "msg": msg
@@ -98,7 +98,7 @@
                     success:function(data) {
                         var content = $("#content").html();
                         $("#content").html(content+'<div style="margin-bottom: 8px">\n' +
-                            '                        <p><q style="color: #eb7350">'+'服务器推送  '+msg+' -->'+user+ '</span></p>\n' +
+                            '                        <p><q style="color: #eb7350">'+'服务器: '+msg+' -->'+user+ '</span></p>\n' +
                             '                    </div>\n' +
                             '                    <br/>');
                         console.log(data);
@@ -121,7 +121,7 @@
                    success:function(data) {
                        var content = $("#content").html();
                        $("#content").html(content+'<div style="margin-bottom: 8px">\n' +
-                           '                        <p><q style="color: #eb7350">'+'服务器推送  '+msg+' --> 所有用户'+ '</span></p>\n' +
+                           '                        <p><q style="color: #eb7350">'+'服务器: '+msg+' --> 所有用户'+ '</span></p>\n' +
                            '                    </div>\n' +
                            '                    <br/>');
                        console.log(data);
@@ -134,12 +134,10 @@
 
        function connect(){
                if ('WebSocket' in window){
-                   //ws = new WebSocket("ws://www.niezhiliang.com:8086/socketServer/niezhiliang9595");
-                   ws = new WebSocket("ws://127.0.0.1:8086/socketServer/niezhiliang9595");
+                   ws = new WebSocket("ws://127.0.0.1:8898/socketServer/liumm");
                }
                else if ('MozWebSocket' in window){
-                   //ws = new MozWebSocket("ws://www.niezhiliang.com:8086/socketServer/niezhiliang9595");
-                   ws = new MozWebSocket("ws://127.0.0.1:8086/socketServer/niezhiliang9595");
+                   ws = new MozWebSocket("ws://127.0.0.1:8898/socketServer/liumm");
                }
                else{
                    alert("该浏览器不支持websocket");
@@ -152,11 +150,9 @@
                        '                    <br/>');
                    console.log(msg)
                };
-
                ws.onclose = function(evt) {
                   console.log('连接关闭')
                };
-
                ws.onopen = function(evt) {
                    var content = $("#content").html();
                    $("#content").html(content+'<div style="margin-bottom: 8px">\n' +
