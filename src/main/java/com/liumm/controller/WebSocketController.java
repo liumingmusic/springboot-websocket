@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 
 
 /**
- * 描述: websocket客户端
+ * 描述: webSocket客户端
  *
  * @Author liumm
  * @UpdateRemark: 更新说明
